@@ -2,7 +2,8 @@ import { MissionUtils } from "@woowacourse/mission-utils";
 
 class App {
   async run() {
-    const car_list = await MissionUtils.Console.readLineAsync();
+    const car_list_input = await MissionUtils.Console.readLineAsync();
+    const car_list = car_list_input.split(",");
     const count = await MissionUtils.Console.readLineAsync();
 
     const car_racing = {};
@@ -18,6 +19,7 @@ class App {
       });
     }
 
+    MissionUtils.Console.print(car_racing);
   }
 }
 
