@@ -19,16 +19,14 @@ class App {
           car_racing[name] += 1;
         }
       });
+
+      for(const name in car_racing){
+        const value = car_racing[name];
+        MissionUtils.Console.print(`${name} : ` + '-'.repeat(value));
+      }
     }
 
-    for(const name in car_racing){
-      const value = car_racing[name];
-      MissionUtils.Console.print(`${name} : ` + '-'.repeat(value));
-    }
-
-    car_racing.sort();
-    const winner =
-    MissionUtils.Console.print(`최종 우승자`);
+    
   }
 }
 
