@@ -25,7 +25,7 @@ const getLogSpy = () => {
 };
 
 describe("자동차 경주", () => {
-  test("기능 테스트", async () => {
+  test("기능 테스트1", async () => {
     // given
     const MOVING_FORWARD = 4;
     const STOP = 3;
@@ -46,6 +46,39 @@ describe("자동차 경주", () => {
     });
   });
 
+  test("기능 테스트2", async () => {
+    // given
+    const MOVING_FORWARD = 4;
+    const STOP = 3;
+    const inputs = ["pobi,woni,mogi", "5"];
+    const logs = [
+    "pobi : ", "woni : ", "mogi : -",
+    "pobi : -", "woni : ", "mogi : -",
+    "pobi : -", "woni : ", "mogi : --",
+    "pobi : -", "woni : -", "mogi : --",
+    "pobi : -", "woni : -", "mogi : ---",
+    "최종 우승자 : mogi"
+  ];
+    const logSpy = getLogSpy();
+
+    mockQuestions(inputs);
+    mockRandoms([
+      STOP, STOP, MOVING_FORWARD,
+      MOVING_FORWARD, STOP, STOP,
+      STOP, STOP, MOVING_FORWARD,
+      STOP, MOVING_FORWARD, STOP,
+      STOP, STOP, MOVING_FORWARD,
+    ]);
+
+    // when
+    const app = new App();
+    await app.run();
+
+    // then
+    logs.forEach((log) => {
+      expect(logSpy).toHaveBeenCalledWith(expect.stringContaining(log));
+    });
+  });
   
 
   test("예외 테스트", async () => {
