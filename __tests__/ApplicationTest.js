@@ -46,6 +46,8 @@ describe("자동차 경주", () => {
     });
   });
 
+  
+
   test("예외 테스트", async () => {
     // given
     const inputs = ["pobi,javaji"];

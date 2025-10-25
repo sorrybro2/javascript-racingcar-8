@@ -12,6 +12,8 @@ class App {
 
     car_list.forEach((name) => car_racing[name] = 0);
 
+
+    // 랜덤한 숫자로 레이싱 진행 및 진행도 출력
     for(let i = 0; i < count; i++){
       car_list.forEach((name) => {
         const random_num = MissionUtils.Random.pickNumberInRange(0, 9);
@@ -26,7 +28,13 @@ class App {
       }
     }
 
-    
+    // 우승자 및 공동 우승자 구하기!
+    const max = Math.max(...Object.values(car_racing));
+    const winner = Object.keys(car_racing).filter((name) =>
+      car_racing[name] == max
+    );
+
+    MissionUtils.Console.print(`최종 우승자 : ${winner.join(',')}`);
   }
 }
 
