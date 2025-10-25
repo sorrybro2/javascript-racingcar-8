@@ -2,6 +2,8 @@ import { MissionUtils } from "@woowacourse/mission-utils";
 
 class App {
   async run() {
+
+    // 입력값 잘 이용할 수 있게 파싱
     const car_list_input = await MissionUtils.Console.readLineAsync();
     const car_list = car_list_input.split(",");
     const count = await MissionUtils.Console.readLineAsync();
@@ -19,7 +21,14 @@ class App {
       });
     }
 
-    MissionUtils.Console.print(car_racing);
+    for(const name in car_racing){
+      const value = car_racing[name];
+      MissionUtils.Console.print(`${name} : ` + '-'.repeat(value));
+    }
+
+    car_racing.sort();
+    const winner =
+    MissionUtils.Console.print(`최종 우승자`);
   }
 }
 
