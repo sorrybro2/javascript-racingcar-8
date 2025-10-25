@@ -34,7 +34,7 @@ class App {
       car_racing[name] == max
     );
 
-    MissionUtils.Console.print(`최종 우승자 : ${winner.join(',')}`);
+    MissionUtils.Console.print(`최종 우승자 : ${winner.join(', ')}`);
   }
 }
 

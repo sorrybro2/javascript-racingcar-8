@@ -79,6 +79,40 @@ describe("자동차 경주", () => {
       expect(logSpy).toHaveBeenCalledWith(expect.stringContaining(log));
     });
   });
+
+    test("공동 우승자", async () => {
+    // given
+    const MOVING_FORWARD = 4;
+    const STOP = 3;
+    const inputs = ["pobi,woni,mogi", "5"];
+    const logs = [
+    "pobi : -", "woni : ", "mogi : ",
+    "pobi : --", "woni : ", "mogi : ",
+    "pobi : --", "woni : -", "mogi : ",
+    "pobi : --", "woni : --", "mogi : ",
+    "pobi : --", "woni : --", "mogi : -",
+    "최종 우승자 : pobi, woni"
+  ];
+    const logSpy = getLogSpy();
+
+    mockQuestions(inputs);
+    mockRandoms([
+      MOVING_FORWARD, STOP, STOP,
+      MOVING_FORWARD, STOP, STOP,
+      STOP, MOVING_FORWARD, STOP,
+      STOP, MOVING_FORWARD, STOP,
+      STOP, STOP, MOVING_FORWARD,
+    ]);
+
+    // when
+    const app = new App();
+    await app.run();
+
+    // then
+    logs.forEach((log) => {
+      expect(logSpy).toHaveBeenCalledWith(expect.stringContaining(log));
+    });
+  });
   
 
   test("예외 테스트", async () => {
