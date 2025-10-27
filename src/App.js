@@ -13,7 +13,7 @@ class App {
       throw new Error("[ERROR]");
     }else if(car_list.some(n => n.length > 5)){
       throw new Error("[ERROR]");
-    }else if(count == isNaN(Number(count)) || Number(count) < 0){
+    }else if(isNaN(Number(count)) || Number(count) < 0 || !Number.isInteger(Number(count))){
       throw new Error("[ERROR]")
     }
 

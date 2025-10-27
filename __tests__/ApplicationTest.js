@@ -113,11 +113,32 @@ describe("자동차 경주", () => {
       expect(logSpy).toHaveBeenCalledWith(expect.stringContaining(log));
     });
   });
-  
 
-  test("예외(시도 횟수 x)", async () => {
+
+describe("예외 입력 테스트", () => {
+  test.each([
+    {
+      name: "시도 횟수 없음 (2번째 입력 안 넣음)",
+      inputs: ["pobi,javaji"]
+    },
+    {
+      name: "플레이어 이름 5글자 이상",
+      inputs: ["pobizzang,wonitv", "2"]
+    },
+    {
+      name: "시도 횟수가 숫자가 아님 (문자열)",
+      inputs: ["pobi,woni", "aa"]
+    },
+    {
+      name: "시도 횟수가 자연수가 아님 (음수)",
+      inputs: ["pobi,woni", "-3"]
+    },
+    {
+      name: "시도 횟수가 자연수가 아님 (소수)",
+      inputs: ["pobi,woni", "2.7"]
+    },
+  ])("$name", async ({ inputs }) => {
     // given
-    const inputs = ["pobi,javaji"];
     mockQuestions(inputs);
 
     // when
@@ -126,41 +147,5 @@ describe("자동차 경주", () => {
     // then
     await expect(app.run()).rejects.toThrow("[ERROR]");
   });
-
-  test("예외(플레이어 이름 5글자 이상)", async () => {
-    // given
-    const inputs = ["pobi.javaji","2"];
-    mockQuestions(inputs);
-
-    // when
-    const app = new App();
-
-    // then
-    await expect(app.run()).rejects.toThrow("[ERROR]");
-  });
-
-    test("예외 (시도 횟수 자연수 x)", async () => {
-    // given
-    const inputs = ["pobi,javaji","aa"];
-    mockQuestions(inputs);
-
-    // when
-    const app = new App();
-
-    // then
-    await expect(app.run()).rejects.toThrow("[ERROR]");
-  });
-
-  
-    test("예외(시도 횟수 자연수 x)2", async () => {
-    // given
-    const inputs = ["pobi,javaji","-3"];
-    mockQuestions(inputs);
-
-    // when
-    const app = new App();
-
-    // then
-    await expect(app.run()).rejects.toThrow("[ERROR]");
-  });
+});
 });
