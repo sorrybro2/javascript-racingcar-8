@@ -8,6 +8,13 @@ class App {
     const car_list = car_list_input.split(",");
     const count = await MissionUtils.Console.readLineAsync();
 
+    // 잘못 입력 시 [ERROR] 문구와 함께 예외를 발생
+    if(count == null){
+      throw new Error("[ERROR]");
+    }else if(car_list.some(n => n.length > 5)){
+      throw new Error("[ERROR]");
+    }
+
     const car_racing = {};
 
     car_list.forEach((name) => car_racing[name] = 0);
