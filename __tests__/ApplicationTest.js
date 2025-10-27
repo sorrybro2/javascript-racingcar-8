@@ -115,7 +115,7 @@ describe("자동차 경주", () => {
   });
   
 
-  test("예외 테스트", async () => {
+  test("예외(시도 횟수 x)", async () => {
     // given
     const inputs = ["pobi,javaji"];
     mockQuestions(inputs);
@@ -127,9 +127,34 @@ describe("자동차 경주", () => {
     await expect(app.run()).rejects.toThrow("[ERROR]");
   });
 
-  test("예외 테스트2", async () => {
+  test("예외(플레이어 이름 5글자 이상)", async () => {
     // given
     const inputs = ["pobi.javaji","2"];
+    mockQuestions(inputs);
+
+    // when
+    const app = new App();
+
+    // then
+    await expect(app.run()).rejects.toThrow("[ERROR]");
+  });
+
+    test("예외 (시도 횟수 자연수 x)", async () => {
+    // given
+    const inputs = ["pobi,javaji","aa"];
+    mockQuestions(inputs);
+
+    // when
+    const app = new App();
+
+    // then
+    await expect(app.run()).rejects.toThrow("[ERROR]");
+  });
+
+  
+    test("예외(시도 횟수 자연수 x)2", async () => {
+    // given
+    const inputs = ["pobi,javaji","-3"];
     mockQuestions(inputs);
 
     // when
