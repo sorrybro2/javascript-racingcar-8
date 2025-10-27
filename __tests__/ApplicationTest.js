@@ -122,7 +122,7 @@ describe("예외 입력 테스트", () => {
       inputs: ["pobi,woni"]
     },
     {
-      name: "자동차 리스트 없음",
+      name: "플레이어 리스트 없음",
       inputs: ["3"]
     },
     {
@@ -132,6 +132,10 @@ describe("예외 입력 테스트", () => {
     {
       name: "플레이어 이름 5글자 이상",
       inputs: ["pobizzang,wonitv", "2"]
+    },
+        {
+      name: "플레이어 이름 중복",
+      inputs: ["pobi,woni,pobi", "3"]
     },
     {
       name: "시도 횟수가 숫자가 아님 (문자열)",
