@@ -4,12 +4,16 @@ export function initCarStatus(list){
     return Object.fromEntries(list.map((name)=>[name, 0]));
 }
 
+function goOrNot(status, name){
+    const randomNum = MissionUtils.Random.pickNumberInRange(0, 9);
+    if(randomNum >= 4){
+      status[name] += 1;
+    }
+}
+
 export function racing(cars, status){
     cars.forEach((name) => {
-        const randomNum = MissionUtils.Random.pickNumberInRange(0, 9);
-        if(randomNum >= 4){
-          status[name] += 1;
-        }
+        goOrNot(status, name);
     });
 }
 
