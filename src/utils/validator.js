@@ -1,6 +1,6 @@
 const MAX_NAME_LENGTH = 5;
 
-export function validateInput(count, carList){
+export function validateInput(list, count){
 
     // 자동차 이름 미기입 혹은 시도 횟수 미기입 혹은 둘다 미기입 검증
     if(count == null){
@@ -8,7 +8,7 @@ export function validateInput(count, carList){
     }
     
     // 자동차 이름 길이 검증
-    else if(carList.some(n => n.length > MAX_NAME_LENGTH)){
+    else if(list.some(n => n.length > MAX_NAME_LENGTH)){
       throw new Error("[ERROR]");
     }
     

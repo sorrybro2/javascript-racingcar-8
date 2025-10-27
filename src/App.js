@@ -14,7 +14,7 @@ class App {
     const count = await MissionUtils.Console.readLineAsync();
 
     // 잘못 입력 시 [ERROR] 문구와 함께 예외를 발생
-    validateInput(count, carList);
+    validateInput(carList, count);
 
     // 레이싱 진행 초기화
     const carRaceStatus = initCarStatus(carList);
