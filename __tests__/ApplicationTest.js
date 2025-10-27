@@ -115,49 +115,49 @@ describe("자동차 경주", () => {
   });
 
 
-describe("예외 입력 테스트", () => {
-  test.each([
-    {
-      name: "시도 횟수 없음 (2번째 입력 안 넣음)",
-      inputs: ["pobi,woni"]
-    },
-    {
-      name: "플레이어 리스트 없음",
-      inputs: ["3"]
-    },
-    {
-      name: "입력값 없음",
-      inputs: [""]
-    },
-    {
-      name: "플레이어 이름 5글자 이상",
-      inputs: ["pobizzang,wonitv", "2"]
-    },
-        {
-      name: "플레이어 이름 중복",
-      inputs: ["pobi,woni,pobi", "3"]
-    },
-    {
-      name: "시도 횟수가 숫자가 아님 (문자열)",
-      inputs: ["pobi,woni", "aa"]
-    },
-    {
-      name: "시도 횟수가 자연수가 아님 (음수)",
-      inputs: ["pobi,woni", "-3"]
-    },
-    {
-      name: "시도 횟수가 자연수가 아님 (소수)",
-      inputs: ["pobi,woni", "2.7"]
-    },
-  ])("$name", async ({ inputs }) => {
-    // given
-    mockQuestions(inputs);
+  describe("예외 입력 테스트", () => {
+    test.each([
+      {
+        name: "시도 횟수 없음 (2번째 입력 안 넣음)",
+        inputs: ["pobi,woni"]
+      },
+      {
+        name: "플레이어 리스트 없음",
+        inputs: ["3"]
+      },
+      {
+        name: "입력값 없음",
+        inputs: [""]
+      },
+      {
+        name: "플레이어 이름 5글자 이상",
+        inputs: ["pobizzang,wonitv", "2"]
+      },
+          {
+        name: "플레이어 이름 중복",
+        inputs: ["pobi,woni,pobi", "3"]
+      },
+      {
+        name: "시도 횟수가 숫자가 아님 (문자열)",
+        inputs: ["pobi,woni", "aa"]
+      },
+      {
+        name: "시도 횟수가 자연수가 아님 (음수)",
+        inputs: ["pobi,woni", "-3"]
+      },
+      {
+        name: "시도 횟수가 자연수가 아님 (소수)",
+        inputs: ["pobi,woni", "2.7"]
+      },
+    ])("$name", async ({ inputs }) => {
+      // given
+      mockQuestions(inputs);
 
-    // when
-    const app = new App();
+      // when
+      const app = new App();
 
-    // then
-    await expect(app.run()).rejects.toThrow("[ERROR]");
+      // then
+      await expect(app.run()).rejects.toThrow("[ERROR]");
+    });
   });
-});
 });

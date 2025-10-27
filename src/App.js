@@ -1,8 +1,6 @@
 import { MissionUtils } from "@woowacourse/mission-utils";
 import { validateInput } from "./utils/validator.js";
-import { initCarStatus } from "./utils/gameLogic.js";
-import { racing } from "./utils/gameLogic.js";
-import { raceStatusPrint } from "./utils/gameLogic.js";
+import { initCarStatus, racing, raceStatusPrint,} from "./utils/gameLogic.js";
 import { getWinner } from "./utils/getWinner.js";
 
 class App {
