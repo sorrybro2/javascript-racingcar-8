@@ -1,12 +1,16 @@
 import { MissionUtils } from "@woowacourse/mission-utils";
 
+const RANDOM_MIN = 0;
+const RANDOM_MAX = 9;
+const MOVE_NUM = 4
+
 export function initCarStatus(list){
     return Object.fromEntries(list.map((name)=>[name, 0]));
 }
 
 function goOrNot(status, name){
-    const randomNum = MissionUtils.Random.pickNumberInRange(0, 9);
-    if(randomNum >= 4){
+    const randomNum = MissionUtils.Random.pickNumberInRange(RANDOM_MIN, RANDOM_MAX);
+    if(randomNum >= MOVE_NUM){
       status[name] += 1;
     }
 }
