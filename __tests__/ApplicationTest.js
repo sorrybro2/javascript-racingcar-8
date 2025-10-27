@@ -119,7 +119,15 @@ describe("예외 입력 테스트", () => {
   test.each([
     {
       name: "시도 횟수 없음 (2번째 입력 안 넣음)",
-      inputs: ["pobi,javaji"]
+      inputs: ["pobi,woni"]
+    },
+    {
+      name: "자동차 리스트 없음",
+      inputs: ["3"]
+    },
+    {
+      name: "입력값 없음",
+      inputs: [""]
     },
     {
       name: "플레이어 이름 5글자 이상",
